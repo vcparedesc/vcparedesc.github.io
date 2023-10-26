@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>V. Paredes</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2023-10-26T01:05:59-04:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Mark Otto</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>About me</title>
+   <link href="http://localhost:4000/2023/04/07/Introduction/"/>
+   <updated>2023-04-07T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2023/04/07/Introduction</id>
+   <content type="html">&lt;p&gt;I am a PhD student in Mechanical Engineering at The Ohio State University working under &lt;a href=&quot;https://mae.osu.edu/cyberbotics&quot;&gt;Dr. Ayonga Hereid&lt;/a&gt; working on bipedal locomotion for humanoids and exoskeleton devices. I’m using optimization, template-based planners and non-linear control as the basis of my research. On the implementation side, I have developed C++ code to manage sensor data and compute real-time control algorithms for our robotic systems. I’ve previously completed a MSc. in Mechanical Engineering at Texas A&amp;amp;M University working on bipedal locomotion and lower-limb  prosthetic devices.&lt;/p&gt;
+
+&lt;h3 id=&quot;timeline&quot;&gt;Timeline&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2008 - 2012, Mechatronics Engineering at National University of Engineering. Lima, Peru.&lt;/li&gt;
+  &lt;li&gt;2013 - 2014, Visiting Scholar at Texas A&amp;amp;M University. College Station TX, USA.&lt;/li&gt;
+  &lt;li&gt;2014 - 2016, MSc Mechanical Engineering, Texas A&amp;amp;M University. College Station TX, USA.&lt;/li&gt;
+  &lt;li&gt;2017 - 2019, CEO at Lima Bionics and lecturer at National University of Engineering. Lima, Peru.&lt;/li&gt;
+  &lt;li&gt;2019 - 2024, PhD Mechanical Engineering, The Ohio State University. Columbus OH, USA.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;research-highlights&quot;&gt;Research highlights&lt;/h3&gt;
+
+&lt;p&gt;Please click on &lt;a href=&quot;/pages/Research&quot;&gt;Research&lt;/a&gt; or follow a particular highlight if you want more details.&lt;/p&gt;
+
+&lt;h4 id=&quot;safe-whole-body-control&quot;&gt;Safe Whole Body Control&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=vNTIcODR6cI&quot;&gt;&lt;img src=&quot;/assets/SafeWBC.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;alip-based-control&quot;&gt;ALIP based control&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=yVQ6K8GVnv8&quot;&gt;&lt;img src=&quot;/assets/ALIP.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;lip-based-control-with-neural-regulation&quot;&gt;LIP based control with Neural Regulation&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=7ym2gm3XiOE&quot;&gt;&lt;img src=&quot;/assets/LIP_NN.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;trajectory-optimization-and-com-regulation&quot;&gt;Trajectory Optimization and CoM regulation&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=WsZWf8C3ZgY&quot;&gt;&lt;img src=&quot;/assets/TO_Atalante.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;trajectory-optimization-in-durus&quot;&gt;Trajectory Optimization in DURUS&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=HyqT9Bdamt8&quot;&gt;&lt;img src=&quot;/assets/DURUS.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ampro-ii---powered-transfemoral-device&quot;&gt;AMPRO II - Powered Transfemoral Device&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NxJ7nMsJ63o&quot;&gt;&lt;img src=&quot;/assets/AMPRO_II.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ampro-i---powered-transfemoral-device&quot;&gt;AMPRO I - Powered Transfemoral Device&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=EzOIb0CP_pU&quot;&gt;&lt;img src=&quot;/assets/AMPRO_I.png&quot; alt=&quot;Safe Whole Body Control&quot; width=&quot;650&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Contact</title>
+   <link href="http://localhost:4000/2023/04/06/contact/"/>
+   <updated>2023-04-06T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2023/04/06/contact</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  Preferred contact method is email!
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;email: paredescauna.1 at osu.edu&lt;/li&gt;
+  &lt;li&gt;linkedin: https://www.linkedin.com/in/victor-christian-paredes-cauna-99186449&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+
+</feed>

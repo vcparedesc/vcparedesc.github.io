@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Introduction to nonlinear systems &middot; V. Paredes
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          V. Paredes
+        </a>
+      </h1>
+      <p class="lead">Bipedal locomotion, controls and planning. Visit our <a href="https://mae.osu.edu/cyberbotics" target="_blank">laboratory</a> for an overview of our work.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/pages/Miscellaneous/">Miscellaneous</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/pages/Notes/">Notes</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/pages/Research/">Research</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <!-- <a class="sidebar-nav-item" href="https://github.com/vcparedesc/archive/v2.1.0.zip">Download</a> -->
+      <a class="sidebar-nav-item" href="https://github.com/vcparedesc">GitHub</a>
+      <!-- <span class="sidebar-nav-item">Currently v2.1.0</span> -->
+    </nav>
+
+    <p>&copy; 2023. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="page">
+  <h1 class="page-title">Introduction to nonlinear systems</h1>
+  <h2 id="general-idea">General Idea</h2>
+
+<p>Nonlinear control is a field of control that deals with nonlinear dynamical systems without making the system linear by the Taylor series approximation, as it is commonly done in linear control theory. Instead, by using model-aware user-crafted nonlinear control signals we can transform a nonlinear objective into a linear system and apply the linear control tools we know to stabilize it.</p>
+
+<h2 id="control-techniques">Control techniques</h2>
+
+<p>In nonlinear control theory we can find  feedback linearization, sliding mode control, adaptive control, control lyapunov function and many other techniques. More or less  they heavily rely on the knowledge of the dynamics of the non-linear system,  or at least its dynamic structure. I will mostly focus here on feedback linearization because it is quite simple and yet  a very powerful tool for control and verification.</p>
+
+<h2 id="feedback-linearization">Feedback linearization</h2>
+
+<p>Let’s start with a very simple example. Consider the following scalar ($x$ is not a vector) nonlinear system with unbounded control $u$:</p>
+
+\[\dot{x}=3x^2+\sin(x)+(1+x^2)u\]
+
+<p>Can you guess a stabilizing controller that drives $x \rightarrow 0$? Remember that you have free choosing of the control signal $u$, you know the dynamics of the system and the state $x$ is known at every instant of time.</p>
+
+<p>You might have guessed the control signal by now, even if you didn’t, it is actually quite simple. We want to remove the nonlinear terms, and it makes sense since they are the ones that make the system harder to understand. The nonlinear feedback is:</p>
+
+\[u=\frac{1}{1+x^2}[-3x^2-\sin(x)+\nu]\]
+
+<p>We just applied the inverse of the nonlinear terms. But we also applied an auxiliary control $\nu \in \mathbb{R}$, this control term will be designed with linear control tools. When we apply the control to the non-linear system we end up with:</p>
+
+\[\dot{x}=\nu\]
+
+<p>This is a linear system, a very simple one in fact. For a first-order system we can apply a proportional control $\nu=-Kx, K&gt;0$. This leaves us with  $\dot{x}=-Kx$ which is an stable system.</p>
+
+<aside>
+💡 Note that the the control signal is well-defined because $(1+x^2)$  is never zero. In general it is important to check that the transformation is singularity-free in the domain of operation.
+
+</aside>
+
+<p>You see, this is a very simple idea but it powers a lot of nonlinear control techniques. We will explore a second example before we generalize it.</p>
+
+<p>Consider the following scalar nonlinear system:</p>
+
+\[\dot{x}_1=x_2 \\
+\dot{x}_2= \sin(x_1)+x_3\\
+\dot{x}_3=x_1+u\]
+
+<p>Now, assume our objective is to drive $y=x_1-x_2 \rightarrow  0$.  This might seem trickier, in one hand we have a third order  system and on the other, we want to control a function of our states $y(x_1,x_2)$. As we will see, the trick is to generate the dynamics of $y(x)$  and generate a linearizing feedback that leads again to a linear system. To generate the dynamics of $y$ we will apply  a derivative operator over it until the control signal $u$ appears on the dynamics. Let’s see how it goes:</p>
+
+\[y=x_1-x_2\]
+
+<p>We apply the first derivative:</p>
+
+\[\dot{y}=\dot{x}_1-\dot{x}_2=x_2-\sin(x_1)-x_3\]
+
+<p>We don’t see the control signal $u$ yet, so we apply another derivative:</p>
+
+\[\ddot{y}=\dot{x}_2-\cos(x_1)\dot{x}_1-\dot{x}_3\\
+\ddot{y}=\sin(x_1)+x_3-\cos(x_1)x_2-x_1-u\]
+
+<p>In  the last expression we found the control $u$. Since we find the control on the second derivative of the output $y$, we say that the output has relative degree two ($r=2$). Now we apply  the same idea as the first example. We will make all the other terms cancel with an appropriate control:</p>
+
+\[u=-(x_1+\cos(x_1)x_2-x_3-\sin(x_1))-\nu\]
+
+<p>We end up with the following linear dynamics on the output:</p>
+
+\[\ddot{y}=\nu\]
+
+<p>For that second order system a PD controller suffice to drive $y \rightarrow 0$. In that case $\nu=-K_py-K_d\ddot{y}$, and the output $y$ is stabilized.</p>
+
+<aside>
+💡 Our original system is of order 3, while our output dynamics is a second order system. It means that there is a residual dynamics called Zero Dynamics of order 1. It is important to check the stability of the Zero Dynamics.
+
+</aside>
+
+<h2 id="zero-dynamics">Zero Dynamics</h2>
+
+<p>The Zero Dynamics is the dynamics that is left after controlling the output system. There is a couple of common ways to formalize it but we will not do it yet. Besides more detail and formal definitions can be found in nonlinear systems books.</p>
+
+<p>Consider the following system:</p>
+
+\[\dot{x}_1=x_1^2+x_2\\
+\dot{x}_2=x_2+u\]
+
+<p>Let’s assume we are interested on driving $y=x_2-x_2^{ref}$ to zero. In that case:</p>
+
+\[\dot{y}=\dot{x}_2=x_2+u\]
+
+<p>For the relative degree one system, the stabilizing control has the form:</p>
+
+\[u=-x_2-Ky\]
+
+<p>The controller drives $y$ to zero, meaning that $x_2=x_2^{ref}$. For the remaining system described by $\dot{x}_1=x_1^2+x_2$ we can analyze it when $x_2$ takes its desired value, i.e.</p>
+
+\[\dot{x}_1=x_1^2+x_2^{ref}\]
+
+<p>We note that this system is dependent on the initial condition of $x_1$ and the value of $x_2^{ref}$. For instance, for $x_2^{ref}=0$ we observe that $x_1$ can explode unstably ($\dot{x}_1=x_1^2$).</p>
+
+<h2 id="example-cart-pole-system">Example: Cart-Pole System</h2>
+
+<p>Let’s borrow the definition of the cart-pole from this <a href="http://underactuated.mit.edu/acrobot.html#cart_pole">MIT lecture note</a>. Specially the structure given in  robot dynamics:</p>
+
+\[M(q)\ddot{q}+C(q,\dot{q})\dot{q}=\tau_g(q)+Bu\]
+
+<p>where, $q=[x, \theta]$.</p>
+
+<p>We usually are interested on controlling $y = \theta - \pi$. The output dynamics are:</p>
+
+\[\ddot{y}=\ddot{\theta}=S\ddot{q}\]
+
+<p>Where $S = \begin{bmatrix} 0 &amp;  1\end{bmatrix}$.</p>
+
+\[\ddot{y}=SM^{-1}(q)[-C(q,\dot{q}) \dot{q}+\tau_g(q)]+SM^{-1}(q)Bu\]
+
+<p>Following the Feedback linearization methodology,  we stabilize the system by providing the following feed-forward term:</p>
+
+\[u=-(SM^{-1}B)^{-1}SM^{-1}(q)[-C(q,\dot{q})\dot{q}+\tau_g(q)] + (SM^{-1}B)^{-1}\nu\]
+
+<p>where the auxiliar control can be chosen as: $\nu=-K_p(\theta-\pi)-K_d \dot{\theta}$</p>
+
+<h3 id="what-happens-with-the-zero-dynamics">What happens with the zero dynamics?</h3>
+
+<p>When we control uniquely the second order system $\ddot{y}=\ddot{\theta}$, the dynamics of $x$ are  left to evolve on its own.</p>
+
+\[\ddot{x}=\bar{S}M^{-1}(q)[-C(q,\dot{q}) \dot{q}+\tau_g(q)]+\bar{S}M^{-1}(q)Bu\]
+
+<p>where, $\bar{S}=\begin{bmatrix} 1 &amp; 0 \end{bmatrix}$ and $u$ is the controller designed above to drive $y \rightarrow 0$. When the control output is driven to zero we note that the controller reduces slightly to</p>
+
+\[u=-(SM^{-1}B)^{-1}SM^{-1}(q)[-C(q,\dot{q})\dot{q}+\tau_g(q)] \\
+\ddot{\theta}=\dot{\theta}=0, \theta=\pi\]
+
+<p>In that case, the dynamics of $x$ becomes:</p>
+
+<p>(I will drop all the dependencies to reduce visual mess)</p>
+
+\[\ddot{x}=\bar{S}M^{-1}[-C \dot{q}+\tau_g]-\bar{S}M^{-1}B(SM^{-1}B)^{-1}SM^{-1}[-C\dot{q}+\tau_g]\]
+
+<p>That equation is independent of u and depends only on the variable $x$, so we can “easily” investigate its stability. I used the symbolic toolbox of MATLAB to simplify that  equation, and it gave me the following  expression:</p>
+
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=”MathJax-script” async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </div>
+
+  </body>
+</html>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script” async src=”https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
