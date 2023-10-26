@@ -57,10 +57,10 @@ defaults:
   values:
     identifier: "notes_es"        
 
-# collections:
-# research:
-#   output: true
-#   scope:
-#     path: "pages/research"
-#   values:
-#     identifier: "research"
+collections:
+research:
+  output: true
+  scope:
+    path: "pages/research"
+  values:
+    identifier: "research"
