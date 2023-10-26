@@ -1,0 +1,66 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      Rouge
+
+# Permalinks
+permalink:        pretty
+#relative_permalinks: true
+
+# Gems
+gems:             [jekyll-paginate]
+
+plugins:          [jekyll-paginate]
+
+collections:
+  notes_en:
+    output: true
+
+
+
+# Setup
+title:            V. Paredes
+tagline:          'A Jekyll theme'
+description:      'Bipedal locomotion, controls and planning. Visit our <a href="https://mae.osu.edu/cyberbotics" target="_blank">laboratory</a> for an overview of our work.'
+url:              http://hyde.getpoole.com
+baseurl:          /
+
+author:
+  name:           'Mark Otto'
+  url:            https://twitter.com/mdo
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/vcparedesc
+
+
+defaults:
+-
+  scope:
+    path: "pages/research"
+    type: pages
+  values:
+    identifier: "research"
+-
+  scope:
+    path: "pages/notes_en"
+    type: pages
+  values:
+    identifier: "notes_en"    
+-
+  scope:
+    path: "pages/notes_es"
+    type: pages
+  values:
+    identifier: "notes_es"        
+
+# collections:
+# research:
+#   output: true
+#   scope:
+#     path: "pages/research"
+#   values:
+#     identifier: "research"
